@@ -1,0 +1,23 @@
+{
+  "name": "erp-system",
+  "version": "1.0.0",
+  "description": "erp system",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server",
+    "dev": "nodemon server",
+    "type": "module"
+  },
+  "keywords": [
+    "erp",
+    "start"
+  ],
+  "author": "faseh",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongoose": "^8.3.2",
+    "nodemon": "^3.1.0"
+  }
+}
