@@ -1,0 +1,14 @@
+{
+    "development": {
+        "user": "faseh",
+        "password": "faseh123",
+        "database": "test_environment",
+        "host": "@cluster0.xfqj151.mongodb.net/"
+    },
+    "production": {
+        "user": "faseh",
+        "password": "faseh123",
+        "database": "Erp-System",
+        "host": "@cluster0.xfqj151.mongodb.net/"
+    }
+}
