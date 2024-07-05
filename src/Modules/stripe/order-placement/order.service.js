@@ -179,3 +179,21 @@ exports.orderDelete = async(req,res)=>{
 
 
 
+exports.orderRefund = async(req,res)=>{
+    try {
+        const paymentIntent = await stripe.paymentIntents.retrieve(req?.params?.paymentIntentId);
+        const refund = await stripe.refunds.create({
+          payment_intent: req?.params?.paymentIntentId,
+          amount: paymentIntent.amount 
+        });
+        return res.status(200).send({message:`Refund Sucessfully! : ${refund}`,success:true })
+        return refund;
+      } catch (error) {
+        console.error("Error creating refund:", error);
+        res.status(500).json({ error: error.message });
+        throw error;
+      }
+
+}
+
+
