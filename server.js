@@ -3,8 +3,7 @@ require('dotenv').config()
 const PORT = process.env.PORT || 2000;
 const app= require("./AppController");
 const connectdb = require('./db')
-
-
+ const fetchServerStatus = require('./monitor')
 
 const server = 
 (async () => {
@@ -12,8 +11,8 @@ const server =
     const { default: chalk } = await import('chalk');
     app.listen(PORT, () => {
       console.log(chalk.green(`\nServer is running on port: ${PORT}`));
+    
      
-
     })
     
   } catch (error) {
@@ -45,7 +44,7 @@ process.on("SIGINT", () => {
   });
 });
 
-
+fetchServerStatus()
 
   connectdb();
   module.exports;
