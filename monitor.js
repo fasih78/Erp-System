@@ -11,6 +11,7 @@ function fetchServerStatus() {
     .then(response => {
       const serverStatus = response.data.status;
       console.log(`Server Status: ${serverStatus}`);
+      
     })
     .catch(error => {
       console.error('Error fetching server status:', error.message);
