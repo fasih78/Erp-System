@@ -23,7 +23,14 @@ app.use(session({
     resave: false,
     saveUninitialized: true
   }));
+
+
+
 app.use(express.json());
+
+
+
+
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(morgan("dev"));
@@ -37,4 +44,26 @@ app.use('/department',departmentroutes)
 app.use('/employee',employeeroutes)
 app.use('/product',productroutes)
 app.use('/order',orderroutes)
+
+
+
+/////////////////////////// check server  server status is down or up  ///////////////////////////
+function checkExternalServiceStatus() {
+  
+  return Math.random() < 0.8; // Simulate 80% availability
+}
+app.get('/status', (req, res) => {
+  // Check the status of external service(s)
+  const isServiceUp = checkExternalServiceStatus();
+
+  if (isServiceUp) {
+    res.json({ status: 'up' });
+  } else {
+    res.json({ status: 'down' });
+  }
+});
+
+///////////////////////////  server status is down or up ///////////////////////////
+
+
 module.exports = app;
