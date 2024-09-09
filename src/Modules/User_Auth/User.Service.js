@@ -5,9 +5,9 @@ const JWT = require('jsonwebtoken');
 const validator =require ('validator')
 require('dotenv').config();
 const session =require('express-session')
+const  EventEmitter = require ('events');
 
-
-
+const myEmitter = new EventEmitter();
 
 
 const transporter = nodemailer.createTransport({
@@ -67,6 +67,7 @@ exports.logIn = async(req,res)=>{
         if (userExist) {
           req.session.userEmail = userExist?.email;
           req.session.userId = userExist?._id;
+          req.session.username = userExist?.username;
           console.log(req.session.userEmail   ,   req.session.userId);
           const hash = userExist.password;
           const passwordCompared = await bcrypt.compare(password, hash)
