@@ -18,21 +18,19 @@ const storage = multer.diskStorage({
 
   const upload = multer({
     storage: storage,
-    limits: {
-      fileSize: 1024 * 1024, // 1 MB limit
-    },
+    limits: { fileSize: 2 * 1024 * 1024 },
     fileFilter: function (req, file, cb) {
       // Check if the uploaded file is an image and has a supported file extension
       if (
-        file.mimetype.startsWith("image/") &&
-        (file.originalname.endsWith(".jpeg") ||
-          file.originalname.endsWith(".png") ||
-          file.originalname.endsWith(".jpg"))
+        file.mimetype.startsWith("application/") &&
+        (file.originalname.endsWith(".pdf") ||
+          file.originalname.endsWith(".docx") ||
+          file.originalname.endsWith(".txt"))
       ) {
+       
         cb(null, true);
-
       } else {
-        cb(new Error("Only supported image files are allowed!"), false);
+        cb(new Error("Only   files are allowed!"), false);
       }
     },
   });
